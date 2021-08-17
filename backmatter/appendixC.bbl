@@ -1,0 +1,37 @@
+\begin{thebibliography}{3}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Liudi~Mulyo \textit{et~al.}(2020)Liudi~Mulyo, Rajpalke, Vullum, Weman,
+  Kishino, and Fimland]{liudimulyo2020853}
+A.~Liudi~Mulyo, M.~K. Rajpalke, P.~E. Vullum, H.~Weman, K.~Kishino, and B.-O.
+  Fimland.
+\newblock \href{https://doi.org/10.1038/s41598-019-55424-z}{The influence of
+  AlN buffer layer on the growth of self-assembled GaN nanocolumns on
+  graphene}.
+\newblock \emph{Scientific Reports} \textbf{10} \penalty0 (1), \penalty0 853
+  (2020).
+
+\bibitem[Robins \textit{et~al.}(2016)Robins, Horneber, Sanford, Bertness,
+  Brubaker, and Schlager]{2016robins}
+L.~H. Robins, E.~Horneber, N.~A. Sanford, K.~A. Bertness, M.~D. Brubaker, and
+  J.~B. Schlager.
+\newblock \href{https://doi.org/10.1063/1.4963291}{Raman spectroscopy based
+  measurements of carrier concentration in n-type GaN nanowires grown by
+  plasma-assisted molecular beam epitaxy}.
+\newblock \emph{Journal of Applied Physics} \textbf{120} \penalty0 (12),
+  \penalty0 124313 (2016).
+
+\bibitem[Jeganathan \textit{et~al.}(2009)Jeganathan, Debnath, Meijers, Stoica,
+  Calarco, Grutzmacher, and Luth]{2009jeganathan}
+K.~Jeganathan, R.~K. Debnath, R.~Meijers, T.~Stoica, R.~Calarco,
+  D.~Grutzmacher, and H.~Luth.
+\newblock \href{https://doi.org/10.1063/1.3148862}{Raman scattering of
+  phonon-plasmon coupled modes in self-assembled GaN nanowires}.
+\newblock \emph{Journal of Applied Physics} \textbf{105} \penalty0 (12),
+  \penalty0 123707 (2009).
+
+\end{thebibliography}

@@ -1,0 +1,50 @@
+%% Index
+
+\cleardoublepage\phantomsection % to fix wrong hyperref to \chapter*{print index}
+% \setcounter{page}{1}
+% \renewcommand{\thepage}{I-\arabic{page}}
+
+% \markboth{Index}% not necessary for "\renewenvironment{theindex} % require"
+% {Index}
+
+% \regularsection % not necessary as there is no section and subsection here
+
+\setcounter{page}{1}
+\renewcommand{\thepage}{M-\arabic{page}}
+
+% ==============================
+
+\headerregularsection % it appears that "index" has a function of "\Makeuppercase" within their heading/footer. so to solve this, in practice, it is similar with reference, meaning the same way to tackle this: by issuing "\headerspecialsection"
+
+% % OR
+
+% \headerspecialsection % not necessary (?) for "\renewenvironment{theindex} % require"
+
+% % err.... after several runs, the header/footer for "index" is slightly bit complicated 
+% % you need to run a few times to see the changes
+% % these two functions are not completely useless
+
+% ==============================
+
+% % run with "\renewenvironment{theindex} % require "\chapter{Index} \begin{multicols}{2} \printindex \end{multicols}" in the preamble
+% \chapter{Index} 
+% \begin{multicols}{2}
+% \printindex
+% \end{multicols}
+
+% % OR
+
+% run with "\renewenvironment{theindex} % require only "\printindex" in the backmatter/index.tex" in the preamble
+{\hypersetup{linkcolor=sophia}
+\printindex
+}
+% Multi-column with "\renewenvironment{theindex}" in the preamble : https://latex.org/forum/viewtopic.php?t=1735
+% other alternatives are available there too
+
+% how to index
+% https://withoutbullshit.com/blog/the-sublime-joy-of-making-a-book-index-indexing
+% https://writingcooperative.com/five-step-process-for-writing-a-book-index-9e2e5d763302
+
+% to-do list in the future:
+% thumb indices --> https://data.math.au.dk/latex/bog/version3/beta/ltxb-2011-09-13-20-10.pdf#page=459
+% first and last word in the header --> https://tex.stackexchange.com/questions/26122/indexing-an-interval-of-words-on-top-of-every-page

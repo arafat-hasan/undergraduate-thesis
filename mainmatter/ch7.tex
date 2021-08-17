@@ -1,0 +1,52 @@
+\chapter[Conclusion]{Conclusion}
+\markboth{Chap. 7\ \ \enspace Conclusion}{Chap 7. Conclusion}
+
+\regularsection
+\headerregularsection
+
+\begin{sloppypar} % to suppress overfull box
+
+Lorem \index{Lorem} ipsum dolor sit amet, consectetuer adipiscing elit \cite{LIUDIMULYO201767}. Ut purus \index{purus} elit,vestibulum ut, placerat ac, adipiscing vitae, felis \citenum{LIUDIMULYO201767}. Curabitur dictum \index{dictum} gravidamauris. Nam arcu libero, nonummy eget, consectetuer id, vulputate a, magna. Donec vehicula augue eu neque \cite{liudimulyo_2018}. Pellentesque habitant morbi tristique senectuset netus et malesuada fames ac turpis egestas \index{egestas}\citenum{liudimulyo_2018}. Mauris ut leo. Cras viverra metusrhoncus sem \cite{2019liudimulyo}. Nulla et lectus vestibulum urna fringilla ultrices. Phasellus eutellus sit amet tortor gravida placerat \citenum{2019liudimulyo}. Integer sapien est, iaculis in, pretium quis,viverra ac, nunc. Praesent eget sem vel leo ultrices bibendum \cite{liudimulyo2020853}. Aenean faucibus. Morbi dolor nulla, malesuada eu, pulvinar at (\ref{fig:figures/paper-iv/fig-1}), mollis ac, nulla. Curabitur auctorsemper nulla \citenum{liudimulyo2020853}. Donec varius orci eget risus. Duis nibh mi, congue eu, accumsaneleifend, sagittis quis, diam. Duis eget orci sit amet orci dignissim rutrum \cite{LIUDIMULYO201767,liudimulyo_2018,2019liudimulyo,liudimulyo2020853,liudimulyo_unpublished1,liudimulyo_unpublished2}. For \Autoref{ch:labelchapter4} and \Autoref{ch:labelchapter5}, as well as \Autoref{ch:labelchapter6}
+
+\end{sloppypar}
+
+\section{Section 1 in chapter 7}
+\lipsum[2-4]
+
+\subsection{Subsection 7.1 of section 1 in chapter 7}
+\lipsum[5-7]
+
+\subsection{Subsection 7.2 of section 1 in chapter 7}
+\lipsum[8-11]
+
+\clearpage\phantomsection % to fix wrong hyperref to this section
+\section[Long section title displayed in the table of content]{Short section title in the chapter}
+\sectionmark{Even shorter title on the header}
+\lipsum[11-19]
+
+\subsection{Subsection 7.2 of section 2 in chapter 7}
+\lipsum[13-14]
+
+%=======================================================================
+%%% References 
+
+% \clearpage
+\phantomsection
+\specialsection % put an indent, see preamble
+\headerspecialsection
+
+{\hypersetup{urlcolor=ntnu,linkcolor=sophia} % set clickable URL title color to black, not ntnu like in the main document
+
+\bibliographystyle{unsrtnat-mod}  % NATBIB ref style
+\bibliography{references}
+}
+
+%=======================================================================
+
+\vspace{2.81ex}
+
+\begin{center}
+    {\color{sophia} \Huge
+    \adforn{21}
+    }
+\end{center}

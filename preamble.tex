@@ -1,0 +1,752 @@
+\usepackage[utf8]{inputenc}
+
+\usepackage{graphicx} % [draft]{graphicx} to remove all images
+\graphicspath{ {images/} }
+\usepackage{wrapfig}
+
+\usepackage{breakcites}
+
+\usepackage[strict]{changepage} % for CV. As the "section" of bch font is slightly off the balance compared with "main text" of crimson font. the balance is then fixed by placing the bch font in the main text, and the "section" of bch font is adjusted accordingly.
+
+%=======================================================================
+%%% thesis geometry
+
+\usepackage[text={115mm,197.2mm},hmarginratio=1:1,vmarginratio=1:1,marginparwidth=12mm]{geometry} 
+
+%=======================================================================
+
+\usepackage{lipsum} %generating lorem ipsum
+
+\usepackage{amsmath,amssymb,amsfonts}
+
+\usepackage{setspace}
+\usepackage{booktabs}
+
+\usepackage{emptypage} %remove header, footer along with the page number in an empty page
+\newcommand\mybar{\kern1pt\rule[-\dp\strutbox]{1pt}{\baselineskip}\kern1pt} %vertical bar
+\usepackage{pdfpages} %[draft]{pdfpages} to remove all pdf
+
+\usepackage{float} %force image position
+
+\usepackage{url}
+\urlstyle{same}
+
+\usepackage[super]{nth}
+
+\usepackage{textgreek}
+
+\usepackage[hang,flushmargin]{footmisc}
+\renewcommand*{\footnotelayout}{\scriptsize}
+
+\usepackage{multirow}
+
+\usepackage[many,listings]{tcolorbox} % color box surrounding anything
+
+%=======================================================================
+%%% Minimize overfull hbox output problem
+
+\usepackage{microtype}
+
+%=======================================================================
+%%% Abbreviations and add this section to table of contents
+
+\usepackage{multicol} % multicolumns
+
+\usepackage[intoc]{nomencl}
+\usepackage{ifthen}
+\setlength{\nomitemsep}{-2pt} % this modifies item vertical separation
+\setlength{\nomlabelwidth}{1.6cm} % this modifies label horizontal separation; {2.5cm} for single column; {1.8cm} for two column, long acronyms
+
+%%% Grouped multi-column nomenclature %%%
+
+\makenomenclature
+
+\setlength{\columnsep}{1.67pc} % column separation
+
+\makeatletter
+\newif\if@nomlist
+
+\newcommand*\nomlist{%
+  \@nomlisttrue
+  \list{}{%
+    \labelwidth\nom@tempdim
+    \leftmargin\labelwidth
+    \advance\leftmargin\labelsep
+    \itemsep\nomitemsep
+    \let\makelabel\nomlabel}}
+
+\renewcommand*\thenomenclature{%
+  \@ifundefined{chapter}%
+    {\section*{\nomname}\if@intoc\addcontentsline{toc}{section}{\nomname}\fi}%
+    {\chapter*{\nomname}\if@intoc\addcontentsline{toc}{chapter}{\nomname}\fi}%
+  \nompreamble
+  \@nomlistfalse
+}
+
+\renewcommand\nomgroup[1]{%
+  \if@nomlist\endlist\end{multicols}\fi
+  \ifx#1A\relax % "1A" can't be replaced with "1a". "a" is fine though in the nomenclature.tex
+    \def\nomgroupname{\textbf{Acronyms}}%
+  \else
+    \ifx#1B\relax % "1B" can't be replaced with "1b". "b" is fine though in the nomenclature.tex
+      \def\nomgroupname{\textbf{Roman symbols}}%
+    \else
+      \def\nomgroupname{\textbf{Greek symbols}}%
+    \fi
+  \fi
+  \begin{multicols}{2}[\raggedcolumns\noindent\textbf{\hspace*{-1pt}\fontfamily{bch}\selectfont\scshape\small{\nomgroupname}}]
+  \nomlist
+}
+
+\renewcommand*\nompreamble{}
+\renewcommand*\nompostamble{\end{multicols}}
+\makeatother
+
+%=======================================================================
+%%% Modifying the listing items
+
+\usepackage{enumitem}  
+\usepackage{pgfornament}
+\usepackage{adforn}
+
+%=======================================================================
+%%% Unique colors used in this PhD thesis
+\usepackage{xcolor}
+\definecolor{sophia}{RGB}{125,0,45}
+\definecolor{ntnu}{RGB}{0,80,158}
+\definecolor{heidelberg}{RGB}{0,65,120} % 
+
+\usepackage{colortbl} % coloring the table
+\definecolor{Gray}{gray}{0.9}
+\definecolor{White}{RGB}{255,255,255}
+
+% for abstract in chapters 5-9
+\definecolor{abstractback}{RGB}{255,248,220}
+
+\definecolor{Test}{RGB}{231,231,231} % must be CAPITALIZED!!!
+\definecolor{Test3}{RGB}{128,128,128}
+\definecolor{Black}{RGB}{0.0, 0.0, 0.0}
+% for figure & table captions, marginnote, etc
+
+\newcommand{\sophia}[1]{\textcolor{sophia}{#1}}
+% too late, only used in Acknowledgement
+
+%=======================================================================
+%%% hyperref
+
+\usepackage[backref=page]{hyperref}
+
+\hypersetup{
+    hidelinks,
+    colorlinks=true,
+    linkcolor=ntnu,
+    citecolor=ntnu,
+    urlcolor=ntnu,
+    breaklinks,
+    linktocpage % for TITLETOC: need to use this to make page number, not text be linked (automatically colored to "ntnu"). if this option is not used, then any text in toc or lof can't be customized in TITLETOC.
+}
+
+% === back references == 
+
+\newcommand{\citedbox}[1]{%
+  \begingroup\setlength{\fboxsep}{1pt}% 1pt is the default value; height
+  \colorbox{White}{\hspace*{-1pt}\vphantom{Ay}#1\hspace*{-1pt}}% each 2pt is the default value; width
+  \endgroup % originally the colorbox is set to "Test". it is good, but draws too much attention.
+}
+
+\usepackage{etoolbox}
+
+\def\backref#1{{\citedbox{\textcolor{Test3}{Cited on page/s} #1\textcolor{Test3}{.}}}} % use this when \citedbox command is used. 
+
+% === \ref = \autoref == %
+
+%% to make the word "Figure" clickable in addition to its number label
+\makeatletter
+\renewcommand{\p@figure}{\figurename\ }
+\makeatother
+
+%% to make the word "Table" clickable in addition to its number label
+\makeatletter
+\renewcommand{\p@table}{\tablename\ }
+\makeatother
+
+% === explicitly mention the Section name === %
+
+\newcommand*{\fullref}[1]{\hyperref[{#1}]{\autoref*{#1} \nameref*{#1}}}
+
+\renewcommand{\sectionautorefname}{Section}
+
+% ======================== %
+
+%%% Capitalize [C]hapter, [S]ection and [S]ubsection in \autoref (default is not capitalized)
+
+\newcommand{\Autoref}[1]{%
+  \begingroup%
+  \def\chapterautorefname{Chapter}%
+  \def\sectionautorefname{Section}%
+  \def\subsectionautorefname{Subsection}%
+  \autoref{#1}%
+  \endgroup%
+}
+
+%=======================================================================
+
+\usepackage{bookmark} % Adding package bookmark improves bookmarks handling, and enable \pdfbookmark for TOC in the main.tex.
+
+% add #(number) in front of the chapter title when it is exported to pdf
+
+\bookmarksetup{numbered}
+
+\makeatletter
+\bookmarksetup{%
+  addtohook={%
+    \ifnum\toclevel@chapter=\bookmarkget{level}\relax
+      \renewcommand*{\numberline}[1]{#1. }%
+    \fi
+  },
+}
+\makeatother
+
+%=======================================================================
+%%% Fonts used in this PhD thesis
+
+\usepackage[T1]{fontenc}
+
+\usepackage{csquotes}
+\usepackage[english]{babel}
+
+%% serif, as a main font %%
+\usepackage{crimson}
+
+%% sans serif, as decoration %%
+\usepackage{roboto} %figure caption fonts
+
+% math font
+\usepackage[libertine]{newtxmath} 
+
+% calligraphical font
+\usepackage{calligra}
+
+% hiragana/kanji
+\usepackage{CJKutf8}
+
+%=======================================================================
+%%% Placing any extra information on the margin of the page
+
+\usepackage{marginnote}
+
+\renewcommand{\marginfont}{\fontsize{6.97}{6}\selectfont\roboto}
+
+\newcounter{mynote}% a new counter for use in margin notes
+ 
+\newcommand{\mynote}[2][0]{% a simple margin note
+    \refstepcounter{mynote}% step counter
+    \mbox{\textcolor{Test3}{\textsuperscript{\themynote}}}% the number (superscript) in text
+    \marginnote{\mbox{\textcolor{Test3}{\textsuperscript{\themynote}}}\hspace{0pt}#2}[#1\baselineskip]% the note
+    % \marginnote{\mbox{\textsuperscript{\themynote}}\color{sophia}\hspace{0pt}#2}[#1\baselineskip]% the note
+}
+
+\newcommand{\mynoteref}[2][0]{% a simple margin note
+    \marginnote{\hspace{0pt}#2}[#1\baselineskip]% the note
+}
+
+
+% coloring the page number (referencing) in the copyright
+\newcommand{\colpageref}[1]{{\hypersetup{linkcolor=sophia}{\pageref{#1}}}} % or \autopageref
+
+% coloring the word "page" (referencing) in the copyright
+\newcommand{\pcol}[1]{{\textcolor{Test3}{#1}}}
+
+% to have a shortcut for coloring the caption, e.g., a, b, c, etc
+\newcommand{\capcol}[1]{{\textcolor{ntnu}{#1}}}
+
+%=======================================================================
+%%% Bibliography at the end of each chapter, based on NATBIB
+
+\usepackage[super,comma,sort&compress]{natbib} 
+
+\usepackage{bibentry}
+
+\usepackage[sectionbib]{chapterbib} % put ref at the end of each chapter. however, the spacing in the TOC will be messed up. it can be fixed using "numbib" option as shown below
+\usepackage[nottoc,numbib]{tocbibind} % numbib (for numbering reference section) is used to enable cross-ref with TOC
+
+\usepackage{hypernat} % to fix the missing page citation "\usepackage[backref=page]{hyperref}" that is nested in between, e.g., 19 is not missing if the refs is from 18-20, i.e., "sort&compress" in natbib is activated
+
+\addto{\captionsenglish}{% if BABEL is used
+  \renewcommand{\bibname}{References}
+}
+
+\renewcommand*{\bibfont}{\footnotesize}
+
+\setlength{\bibsep}{0.7pt}
+
+%=======================================================================
+%=======================================================================
+%=======================================================================
+%%% Header (and/or footer)
+%=======================================================================
+%=======================================================================
+%=======================================================================
+
+\usepackage{fancyhdr}
+\pagestyle{fancy} % this must be placed as a general. DON'T REMOVE IT!
+
+%% with number in front of the title
+\renewcommand{\chaptermark}[1]{ \markboth{Chap. \thechapter\ \ \enspace #1}{} } %\chaptername or "Chap."
+\renewcommand{\sectionmark}[1]{ \markright{\thesection\ \ \quad #1} }
+
+%==========================================================================%
+%=================== header style for regular section =====================%
+%==========================================================================%
+
+\newcommand\headerregularsection{
+
+    \pagestyle{fancy} % optional, but I place this here anyway
+    \fancyhf{}
+
+    \fancyhead[LE]{\leavevmode\llap{\textbf{\fontfamily{ppl}\selectfont\footnotesize\thepage} \ \hspace{1mm} \textcolor{sophia}{$\blacktriangleright$} \hspace{2mm}}{\scriptsize\bfseries\fontfamily{bch}\selectfont\scshape\leftmark}} % default font is Crimson for page number and Charter "bch" for the rest
+
+    \fancyhead[RO]{{\scriptsize\bfseries\fontfamily{bch}\selectfont\scshape\rightmark}\rlap{\hspace{2.0mm} \textcolor{sophia}{$\blacktriangleleft$} \hspace{1mm} \ \textbf{\fontfamily{ppl}\selectfont\footnotesize\thepage}}} % default font is Crimson for page number and Charter "bch" for the rest
+
+}
+
+\setlength{\headheight}{13.6pt} % remove headheight error message: https://tex.stackexchange.com/questions/271159/turn-off-fancyhdr-auto-spacing, https://latex.org/forum/viewtopic.php?t=30693 
+
+\renewcommand{\headrulewidth}{0pt}
+
+%==========================================================================%
+%=================== footer style for new chapter page ====================%
+%==========================================================================%
+
+\fancypagestyle{plain}{% % this command to set aside every new chapter to be different
+    \fancyhf{}%
+    \rfoot{\mypage} % draw box surrounding page
+    \newcommand\mypage{%%
+        \raisebox{6pt}[0pt][0pt]{%% {Xpt}[Xpt] determines the +y,-y both for the box AND the page number
+        \color{ntnu}
+        \rule[-1.5ex]{2.5cm}{0.5pt}%% [Xex]{Xcm}{Xex} are y position, the length of the box, work only with positive number and height of the box
+        \hspace*{-2.0cm}%% box coordinate, right side
+        \makebox[0pt]{\textcolor{ntnu}{\fontfamily{ppl}\selectfont\bfseries\footnotesize\thepage}}%% % page number properties ;  % default font is Crimson for page number and Charter "bch" for the rest
+        \hspace*{0.5cm}}%% box coordinate, left side [BETTER not to change this]
+    }        
+    \fancyfootoffset{1.35\marginparwidth} % give offset to page number
+}
+
+%==========================================================================%
+%========= header style for special section (a.k.a. REFERENCES) ===========%
+%==========================================================================%
+
+\newcommand\headerspecialsection{%
+    \pagestyle{fancy} % fancypagestyle{CUSTOM_NAME}{} only work in the first page
+    \fancyhf{}
+    \fancyhead[LE]{\leavevmode\llap{\textbf{\fontfamily{ppl}\selectfont\footnotesize\thepage} \ \hspace{1mm} \textcolor{sophia}{$\blacktriangleright$} \hspace{2mm}}{\scriptsize\bfseries\fontfamily{bch}\selectfont\scshape\nouppercase\leftmark}} % default font is Crimson for page number and Charter "bch" for the rest
+
+    \fancyhead[RO]{{\scriptsize\bfseries\fontfamily{bch}\selectfont\scshape\nouppercase\rightmark}\rlap{\hspace{2.0mm} \textcolor{sophia}{$\blacktriangleleft$} \hspace{1mm} \ \textbf{\fontfamily{ppl}\selectfont\footnotesize\thepage}}} % default font is Crimson for page number and Charter "bch" for the rest
+} 
+
+%============================================================================%
+% header style for special section for appendix with section/subsection(e.g. B) %
+%============================================================================%
+
+\newcommand\headerspecialsectionappendix{%
+    \pagestyle{fancy} % fancypagestyle{CUSTOM_NAME}{} only work in the first page
+    \fancyhf{}
+    \fancyhead[LE]{\leavevmode\llap{\textbf{\fontfamily{ppl}\selectfont\footnotesize\thepage} \ \hspace{1mm} \textcolor{sophia}{$\blacktriangleright$} \hspace{2mm}}{\scriptsize\bfseries\fontfamily{bch}\selectfont\scshape\leftmark}} % default font is Crimson for page number and Charter "bch" for the rest
+
+    \fancyhead[RO]{{\scriptsize\bfseries\fontfamily{bch}\selectfont\scshape\leftmark}\rlap{\hspace{2.0mm} \textcolor{sophia}{$\blacktriangleleft$} \hspace{1mm} \ \textbf{\fontfamily{ppl}\selectfont\footnotesize\thepage}}} % default font is Crimson for page number and Charter "bch" for the rest
+} 
+
+%==========================================================================%
+%====================== footer style for part page========================%
+%==========================================================================%
+
+% % FSFPP#1
+
+\fancypagestyle{partpagestyle}{
+    \fancyhf{}%
+    \rfoot{\marker} % draw box surrounding page
+    \newcommand\marker{
+        \raisebox{6pt}[0pt][0pt]{%% {Xpt}[Xpt] determines the +y,-y both for the box AND the page number
+        \color{white}
+        \rule[-1.5ex]{14.6cm}{0.5pt}%% [Xex]{Xcm}{Xex} are y position, the length of the box, work only with positive number and height of the box ; 1st value: [13cm] 
+        \hspace*{-2.0cm}%% box coordinate, right side
+        \makebox[0pt]{\textcolor{white}{\fontfamily{ppl}\selectfont\footnotesize\thepage}}%% % page number properties ;  % default font is Crimson for page number and Charter "bch" for the rest
+        \hspace*{0.5cm}}%% box coordinate, left side [BETTER not to change this]
+    }        
+    \fancyfootoffset{1.35\marginparwidth} % give offset to page number
+}
+
+%=======================================================================
+%=======================================================================
+%=======================================================================
+%%% Part, chapter, section and subsection titles
+%=======================================================================
+%=======================================================================
+%=======================================================================
+
+\usepackage{titlesec} % put [explicit] before {titlesec} if you want to use "Linking the section titles to the ToC, alternative 2"
+
+%=================== style 3c
+
+%=======================================================================
+
+%%% Linking the section titles to the ToC, alternative 4  >>> WORKING PROPERLY (THE BEST)
+
+% % works like a charm
+% % this meant to be paired with the chapter, section and subsection styles below (after alternative 5)
+
+% %%% used with alternative 5, since "part page" linking in that alternative works
+% %%% also chapter* can't be recognized
+
+\makeatletter
+
+\let\hypersection\section
+\def\section{\@ifstar\starsection\mysection}
+\def\starsection{\hypersection*}
+\newcommand{\mysection}[2][\@empty]% #1=optional (toc and top of page), #2=title
+{\ifx#1\@empty \hypersection[#2]{\hyperlink{toc.section.\thesection}{#2}}
+ \else \hypersection[#1]{\hyperlink{toc.section.\thesection}{#2}}
+ \fi}
+
+\let\hypersubsection\subsection
+\def\subsection{\@ifstar\starsubsection\mysubsection}
+\def\starsubsection{\hypersubsection*}
+\newcommand{\mysubsection}[2][\@empty]% #1=optional (toc and top of page), #2=title
+{\ifx#1\@empty \hypersubsection[#2]{\hyperlink{toc.subsection.\thesubsection}{#2}}
+ \else \hypersubsection[#1]{\hyperlink{toc.subsection.\thesubsection}{#2}}
+ \fi}
+ 
+\makeatother
+
+%=======================================================================
+
+% %% Linking the section titles to the ToC, alternative 5 >>> WORKING PROPERLY
+
+% % works like a charm
+% % but the linking from the chapter goes to top of TOC, not specific on that particular chapter
+% % this meant to be paired with the chapter, section and subsection styles below (after alternative 5)
+
+% %%% used with alternative 4, since "part page" linking in this alternative works
+% %%% also chapter* can also be recognized, despite its lacking
+
+\usepackage{xparse}
+\AtBeginDocument{
+  \let\oldchapter\chapter
+  \RenewDocumentCommand{\chapter}{s o m}{%
+    \clearpage
+    \IfBooleanTF{#1}
+    {\oldchapter*{\hyperref[toc]{#3}}}% \chapter*[..]{...}
+    {\IfValueTF{#2}
+      {\oldchapter[#2]{\hyperref[toc]{#3}}}% \chapter[..]{...}
+      {\oldchapter[#3]{\hyperref[toc]{#3}}}% \chapter{...}
+      \label{chapter-\thechapter}% \label this chapter
+    }%
+  }
+
+%%% used with alternative 4, since "part page" linking in this alternative works
+  
+  \let\oldpart\part
+  \RenewDocumentCommand{\part}{s o m}{%
+    \clearpage
+    \IfBooleanTF{#1}
+    {\oldpart*{\hyperref[toc]{#3}}}% \part*[..]{...}
+    {\IfValueTF{#2}
+      {\oldpart[#2]{\hyperref[toc]{#3}}}% \part[..]{...}
+      {\oldpart[#3]{\hyperref[toc]{#3}}}% \part{...}
+      \label{part-\thepart}% \label this part
+    }%
+  }
+}
+
+%=== the chapter, section, subsection, and part styles below are paired either with alternatives 4 or 5
+
+%% CHAPTER TITLE FORMAT based on "% ====================================== style 3c-1"
+
+\titleformat% Formatting the header
+  {\chapter} % command
+  [block] % shape - Only managed to get it working with block
+  {\bfseries\color{ntnu}\fontfamily{bch}\selectfont\filright}
+  {\scshape \Large Chapter \LARGE \thechapter\vskip10pt} % The Chapter N° label
+  {0pt} % sep
+  {\Large\itshape\hypersetup{linkcolor=ntnu}\parbox{\textwidth}} % And the actual title
+[\vspace{-0.1ex}\rule{\textwidth}{0.5pt}] % thin line, as wide as the text width 
+
+\titlespacing*{\chapter}{0pt}{20pt}{5ex} % a, b, c are no idea, distance from top, distance to the paragraph
+
+% SECTION AND SUBSECTION TITLE FORMATS (including references section titles) based on "%%% Part, chapter, section and subsection titles"
+
+% Section and subsection titles for single-digit chapters
+
+\newcommand\regularsection{%
+
+    \titleformat{\section} [hang]
+        {\normalfont \color{sophia} \small \bfseries \fontfamily{bch} \selectfont \scshape}{\thesection}{1em}{\hypersetup{linkcolor=sophia}} % {\thesection}{1em} are the default values
+    \titlespacing*{\section}{-\marginparwidth+1.1\marginparsep}{*4}{*4}{} % adjusting the indent and vertical spacing (before and after) ; {-\marginparwidth+1.1\marginparsep}{*4}{*4} are the default value
+    
+    \titleformat{\subsection} [hang]
+        {\normalfont \color{sophia} \small \itshape \bfseries \fontfamily{bch} \selectfont}{\thesubsection}{1em}{\hypersetup{linkcolor=sophia}}
+    \titlespacing*{\subsection}{-\marginparwidth+0.1\marginparsep}{*4}{*4}{} % adjusting the indent and vertical spacing (before and after)
+
+}
+
+% Reference titles for single-digit chapters
+
+\newcommand\specialsection{%
+  \titleformat{\section} [hang]
+    {\normalfont \color{sophia} \small \bfseries \fontfamily{bch} \selectfont \scshape}{\thesection}{1em}{\hypersetup{linkcolor=sophia}} % {\thesection}{1em} are the default values
+  \titlespacing*{\section}{-\marginparwidth+1.1\marginparsep}{*4}{*4}{}
+}
+
+% Section and subsection titles for two-digit chapters
+
+\newcommand\specialsectiontwodigits{%
+  \titleformat{\section} [hang]
+      {\normalfont \color{sophia} \small \bfseries \fontfamily{bch} \selectfont \scshape}{\thesection}{1em}{\hypersetup{linkcolor=sophia}} % {\thesection}{1em} are the default values
+  \titlespacing*{\section}{-\marginparwidth+0.2\marginparsep}{*4}{*4}{}
+}
+
+% Reference titles for two-digit chapters
+
+\newcommand\specialsectionreftwodigits{%
+  \titleformat{\section} [hang]
+  {\normalfont \color{sophia} \small \bfseries \fontfamily{bch} \selectfont \scshape}{\thesection}{1em}{\hypersetup{linkcolor=sophia}} % {\thesection}{1em} are the default values
+  \titlespacing*{\section}{-\marginparwidth+0.25\marginparsep}{*4}{*4}{}
+}
+
+%% PART TITLE FORMAT based on "% FSFPP#1"
+
+\titleclass{\part}{top}  
+\titleformat{\part} [display]
+  {\pagecolor{heidelberg} \thispagestyle{partpagestyle} \centering \fontfamily{ppl} \selectfont \color{white}}
+{\LARGE \partname \ \thepart}
+  {1em}
+{\bfseries \scshape \Huge \hypersetup{linkcolor=white}}
+[{\clearpage\nopagecolor}]
+  \titlespacing*{\part}{0pt}{0pt}{20pt}
+
+%=======================================================================
+% %% Table of content
+
+\usepackage{titletoc}
+
+\usepackage{tikz}
+\newcommand{\simplelinesep}[1]{\noindent% to be optionally used, as an alternative to the \movedornament in the titleformat chapter; for separating PART in TOC
+    \begin{tikzpicture}
+    \tikz \draw[line width=0.3pt] (0,0) -- (2,0); % line
+    \end{tikzpicture}%
+}
+
+\titlecontents{part}
+  [-0.1em]
+  {\vspace*{1.5\baselineskip}\large\scshape\fontfamily{bch}\selectfont\bfseries\color{sophia}} % 1.5: default
+  {}
+  {\simplelinesep\centering\\ \\ \partname~}
+  {\large\hspace{0.75em}\nobreak\color{sophia}\fontfamily{ppl}\selectfont\contentspage}
+
+\titlecontents{chapter}
+  [5.1em] % for horizontal space from left margin for all chapters
+  {\vspace*{0.85\baselineskip}\small\scshape\fontfamily{bch}\selectfont} % vspace is for vertical distance BEFORE; general font, unless otherwise stated
+  {\makebox[0cm][r]{\hspace{.5em}\chaptername~\normalsize\thecontentslabel\hspace{0.75em}}} % "Chapter title" is properly hanged
+  {\hspace{-5.7em}} %horizontal space from left margin for numberless chapters
+  {\hspace{0.5em}\nobreak\normalsize\bfseries\color{sophia}\fontfamily{ppl}\selectfont\contentspage} % for page number (change \hspace to \hfill to make the page number on the right hand side; \color{sophia} is suppressed due to "colorlinks" declared in the hyperref as "ntnu", so basically useless to declare
+  [\vspace*{0.02\baselineskip}] %vertical distance AFTER
+  
+\titlecontents{section}
+  [7.0em]
+  {\vspace*{0.27\baselineskip}\contentslabel{2.0em}} % vspace is for vertical distance between sections; showing section number {the distance between section number and section title} ; 0.05 for default ; -0.25 for alternative 1 ; 0.32: default
+  {}
+  {} 
+  {\small\hspace{0.75em}\nobreak\color{sophia}\fontfamily{ppl}\selectfont\contentspage} % \color{sophia} is suppressed due to "colorlinks" declared in the hyperref as "ntnu", so basically useless to declare  
+  [\vspace*{0.1\baselineskip}] % 0.01 for default ; 0.05 for alternative 1
+
+\titlecontents{subsection}
+  [9.6em]
+  {\vspace*{0.25\baselineskip}\contentslabel{2.7em}} % 0.01 for default ; -0.3 for alternative 1 ; 0.25: default
+  {}
+  {}  
+  {\small\hspace{0.75em}\nobreak\color{sophia}\fontfamily{ppl}\selectfont\contentspage} % \color{sophia} is suppressed due to "colorlinks" declared in the hyperref as "ntnu", so basically useless to declare
+  [\vspace*{0.1\baselineskip}] % 0.01 for default ; 0.01 for alternative 1
+
+%== list of figures ==%
+
+\titlecontents{figure}
+    [3.2em]%
+    {\vspace*{0.32\baselineskip}}% 0.1 is the default value
+    {\makebox[0cm][r]{\hspace{.5em}\normalsize\contentslabel{0em}\hspace{3.25em}}}%
+    {}%
+    {\small\hspace{0.75em}\nobreak\color{sophia}\fontfamily{ppl}\selectfont\contentspage} % \color{sophia} is suppressed due to "colorlinks" declared in the hyperref as "ntnu", so basically useless to declare  
+  [\vspace*{0.1\baselineskip}] % 0.01 for default ; 0.05 for alternative 1
+
+%% === list of figure divider per chapter
+
+\titleformat{name=\section,numberless} [hang]
+        {\normalfont \color{black} \small \fontfamily{bch} \selectfont \scshape}{}{1em}{}
+    \titlespacing*{\section}{-0.3\marginparwidth}{*2}{*2}{}
+
+% for regular chapters in the \mainmatter
+\newcommand*\updatemylof{%
+  \addtocontents{lof}{\protect\section*{Chapter~\thechapter}}%
+}
+
+% put "\updatemylof" after \chapter or before any first figure you want to be grouped in that chapter
+
+% for "appendix A" in the \backmatter [manual adding]
+\newcommand*\updatemylofappendixA{%
+  \addtocontents{lof}{\protect\section*{Appendix A}}%
+}
+
+% for "appendix B" in the \backmatter [manual adding]
+\newcommand*\updatemylofappendixB{%
+  \addtocontents{lof}{\protect\section*{Appendix B}}%
+}
+
+% for "appendix C" in the \backmatter [manual adding]
+\newcommand*\updatemylofappendixC{%
+  \addtocontents{lof}{\protect\section*{Appendix C}}%
+}
+
+% for "dissemination of research" in the \backmatter [manual adding]
+\newcommand*\updatemylofdissemination{%
+  \addtocontents{lof}{\protect\section*{Dissemination of research}}%
+}
+
+%== list of tables ==%
+
+\titlecontents{table}
+    [3.2em]%
+    {\vspace*{0.32\baselineskip}}% 0.1 is the default value
+    {\makebox[0cm][r]{\hspace{.5em}\normalsize\contentslabel{0em}\hspace{3.25em}}}%
+    {}%
+    {\small\hspace{0.75em}\nobreak\color{sophia}\fontfamily{ppl}\selectfont\contentspage} % \color{sophia} is suppressed due to "colorlinks" declared in the hyperref as "ntnu", so basically useless to declare  
+  [\vspace*{0.1\baselineskip}] % 0.01 for default ; 0.05 for alternative 1
+  
+%% === list of table divider per chapter
+
+\newcommand*\updatemylot{%
+  \addtocontents{lot}{\protect\section*{Chapter~\thechapter}}%
+}
+
+% put "\updatemylot" after \chapter or before any first figure you want to be grouped in that chapter
+
+% for "appendix A" in the \backmatter [manual adding]
+\newcommand*\updatemylotappendixA{%
+  \addtocontents{lot}{\protect\section*{Appendix A}}%
+}
+
+% for "appendix B" in the \backmatter [manual adding]
+\newcommand*\updatemylotappendixB{%
+  \addtocontents{lot}{\protect\section*{Appendix B}}%
+}
+
+% for "appendix C" in the \backmatter [manual adding]
+\newcommand*\updatemylotappendixC{%
+  \addtocontents{lot}{\protect\section*{Appendix C}}%
+}
+
+%=======================================================================
+
+%%% Figure captions and table captions
+
+\usepackage{caption}
+\DeclareCaptionFont{labelText}{\scriptsize\roboto}
+\DeclareCaptionFont{captionText}{\scriptsize\roboto}
+
+% Figure captions
+
+\DeclareCaptionFormat{tcbcaption}{%
+  \begin{tcolorbox}[
+    colback=Test,
+    arc=0pt,
+    outer arc=0pt,
+    boxrule=-5pt,
+    colupper=Black,
+    boxsep=0pt, % 0pt is the default value
+    left=0.165cm,
+    grow to left by=0cm, % 0cm is the default value; 0.2cm when left is inactivated
+    right=0.12cm,
+    grow to right by=0cm, % 0cm is the default value; 0.2cm when right is inactivated
+    top=0.12cm,
+    bottom=0.12cm
+  ]
+  \makebox[0.62in][l]{#1#2}\parbox[t]{\dimexpr \textwidth-0.65in}{#3} % [0.65in] for default (see below in \captionsetup) for "format" is "hang" ("labelsep" is "endash")
+  \end{tcolorbox}%
+}
+
+\DeclareCaptionLabelSeparator{slash}{ | }
+
+\captionsetup[figure]{width=1\textwidth,labelfont={labelText,bf,sc},font=captionText,format=tcbcaption,labelsep=period} 
+
+\setlength{\abovecaptionskip}{6pt plus 3pt minus 2pt} % used with "format=tcbcaption"
+
+\DeclareCaptionFormat{smallFigure}{\hspace*{1.5mm}\parbox{5.3cm}{#1#2\\#3}} % for SCfigure function
+
+% Table captions
+
+\DeclareCaptionFormat{tabcaption}{%
+  \begin{tcolorbox}[
+    colback=Test,
+    arc=0pt,
+    outer arc=0pt,
+    boxrule=-5pt,
+    colupper=Black,
+    % fontupper=\large\sffamily,
+    boxsep=0pt, % 0pt is the default value
+    left=0.165cm,
+    grow to left by=0cm, % 0cm is the default value; 0.2cm when left is inactivated
+    right=0.12cm,
+    grow to right by=0cm, % 0cm is the default value; 0.2cm when right is inactivated
+    top=0.12cm,
+    bottom=0.07cm,
+    capture=hbox
+  ]
+  \makebox[0.62in][l]{#1#2}\parbox[t]{\dimexpr \textwidth-0.65in}{#3} % from tcbcaption to break the long sentence
+  \end{tcolorbox}%
+}
+
+\captionsetup[table]{width=1\textwidth,labelfont={labelText,bf,sc},font=captionText,format=tabcaption,labelsep=period,justification=raggedright,singlelinecheck=off}
+
+\makeatletter
+\newcommand*\my@starttable[1][]{%
+  \@float{table}[#1]\roboto\scriptsize
+}
+\patchcmd{\table}{\@float{table}}{\my@starttable}{\PackageInfo{mysty}{Table environment patched successfully.}}{\PackageWarning{mysty}{Could not patch table environment.}}
+\makeatother
+
+% ======================= index ============================%
+
+\usepackage{makeidx}
+
+\makeatletter % this function apparently does NOT work when it is loaded BEFORE "\usepackage[nottoc,numbib]{tocbibind}" is used
+
+% how to load "indexstyle.ist" in \makeindex of \usepackage{makeidx}:
+% run first these first (1st part):
+% \usepackage{imakeidx}
+% \makeindex[intoc=true,options={-s indexstyle.ist}]
+
+\renewenvironment{theindex} % require only "\printindex" in the backmatter/index.tex
+    {\if@twocolumn
+      \@restonecolfalse
+    \else
+      \@restonecoltrue
+    \fi
+    \setlength{\columnseprule}{0pt}
+    \setlength{\columnsep}{35pt}
+    \begin{multicols}{2}[\chapter{\indexname}]		%Adjust the 2 for more columns
+    \markboth{\indexname}%
+             {\indexname}%
+    \thispagestyle{plain}
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{0pt plus 0.3pt}
+    \relax
+    \let\item\@idxitem}%
+  {\end{multicols}\if@restonecol\onecolumn\else\clearpage\fi}
+
+\makeatother
+
+\makeindex
+
+% ============================================================%
+
+\usepackage[hhmmss]{datetime}
+\advance\currenthour by 2
+% activate this if "\noindent\emph{Final Version} as of \today \ at \ \currenttime" in backmatter/colophone is used

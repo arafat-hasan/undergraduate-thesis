@@ -1,0 +1,57 @@
+\chapter[Background]{Background}
+\markboth{Chap. 2\ \ \enspace Background}{Chap 2. Background}
+
+\regularsection
+\headerregularsection
+
+\updatemylof % to be used with "list of figure divider per chapter" (see PREAMBLE)
+
+\begin{sloppypar} % to suppress overfull box
+
+Lorem \index{Lorem} ipsum dolor sit amet, consectetuer adipiscing elit \cite{LIUDIMULYO201767}. Ut purus \index{purus} elit,vestibulum ut, placerat ac, adipiscing vitae, felis \citenum{LIUDIMULYO201767}. Curabitur dictum \index{dictum} gravidamauris. Nam arcu libero, nonummy eget, consectetuer id, vulputate a, magna. Donec vehicula augue eu neque \cite{liudimulyo_2018}. Pellentesque habitant morbi tristique senectuset netus et malesuada fames ac turpis egestas \index{egestas}\citenum{liudimulyo_2018}. Mauris ut leo. Cras viverra metusrhoncus sem \cite{2019liudimulyo}. Nulla et lectus vestibulum urna fringilla ultrices. Phasellus eutellus sit amet tortor gravida placerat \citenum{2019liudimulyo}. Integer sapien est, iaculis in, pretium quis,viverra ac, nunc. Praesent eget sem vel leo ultrices bibendum \cite{liudimulyo2020853}. Aenean faucibus. Morbi dolor nulla, malesuada eu, pulvinar at (\ref{fig:figures/paper-iv/fig-2}), mollis ac, nulla. Curabitur auctorsemper nulla \citenum{liudimulyo2020853}. Donec varius orci eget risus. Duis nibh mi, congue eu, accumsaneleifend, sagittis quis, diam. Duis eget orci sit amet orci dignissim rutrum \cite{LIUDIMULYO201767,liudimulyo_2018,2019liudimulyo,liudimulyo2020853,liudimulyo_unpublished1,liudimulyo_unpublished2}.
+
+\end{sloppypar}
+
+\begin{figure} % \begin{figure} will let LaTeX decide the best figure placement for you ; \begin{figure}[H] for forcing the figure placement here ; in the bottom, \begin{figure}[!b] ; top of the page, \begin{figure}[!t]
+    \centering
+    \includegraphics[width=0.95\textwidth]{figures/paper-iv/fig-2.png}
+    \caption[SEM images of GaN nanocolumns on graphene formed via different AlN MEE cycles]{SEM images of GaN nanocolumns on graphene formed via different AlN MEE cycles\index{MEE cycles!different AlN}. (\textbf{a},\textbf{d}), (\textbf{b},\textbf{e}) and (\textbf{c},\textbf{f}) are (top-, bird’s eye-view) SEM images of samples G1, G2 and G3, respectively. Scale bars are 1 {\textmu}m. Yellow lines, yellow circles (orange contours) and yellow dashed outlines indicate row of high-density vertical GaN nanocolumns, individual (coalesced) vertical GaN nanocolumns and areas with individual tilted GaN nanocolumns, respectively. White outlines in sample G3 indicate the GaN nanotubular-like structures (adapted with permission from ref. \citenum{liudimulyo2020853} \copyright \ Liudi Mulyo \textit{et al}, 2020.}
+    \label{fig:figures/paper-iv/fig-2}
+\end{figure}
+
+\section{Section 1 in chapter 2}
+\lipsum[2]
+
+\begin{equation}
+    EQE = \frac{q \times P_{opt}}{I \times h\nu}
+\end{equation}
+
+\lipsum[3-4]
+
+\subsection{Subsection 2.1 of section 1 in chapter 2}
+\lipsum[5-7]
+
+\subsection{Subsection 2.2 of section 1 in chapter 2}
+\lipsum[8-11]
+
+\clearpage\phantomsection % to fix wrong hyperref to this section
+\section[Long section title displayed in the table of content]{Short section title in the chapter}
+\sectionmark{Even shorter title on the header}
+\lipsum[11-20]
+
+\subsection{Subsection 2.2 of section 2 in chapter 2}
+\lipsum[13-14]
+
+%=======================================================================
+%%% References 
+
+% \clearpage
+\phantomsection
+\specialsection % put an indent, see preamble
+\headerspecialsection
+
+{\hypersetup{urlcolor=ntnu,linkcolor=sophia} % set clickable URL title color to black, not ntnu like in the main document
+
+\bibliographystyle{unsrtnat-mod}  % NATBIB ref style
+\bibliography{references}
+}
