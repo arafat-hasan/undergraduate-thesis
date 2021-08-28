@@ -1,4 +1,4 @@
-\begin{thebibliography}{6}
+\begin{thebibliography}{5}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -29,20 +29,10 @@ Liang H. Li H. et~al. Song, H.
 \newblock \doi{https://doi.org/10.1186/s12544-019-0390-4}.
 
 \bibitem[Baran(2016)]{Baran2016}
-Rusc T. & Fornalski~P. Baran, R.
+Rusc T. \& Fornalski~P. Baran, R.
 \newblock A smart camera for the surveillance of vehicles in intelligent
   transportation systems.
 \newblock (2016).
 \newblock \doi{https://doi.org/10.1007/s11042-015-3151-y}.
-
-\bibitem[Liudi~Mulyo \textit{et~al.}(2020)Liudi~Mulyo, Rajpalke, Vullum, Weman,
-  Kishino, and Fimland]{liudimulyo2020853}
-A.~Liudi~Mulyo, M.~K. Rajpalke, P.~E. Vullum, H.~Weman, K.~Kishino, and B.-O.
-  Fimland.
-\newblock \href{https://doi.org/10.1038/s41598-019-55424-z}{The influence of
-  AlN buffer layer on the growth of self-assembled GaN nanocolumns on
-  graphene}.
-\newblock \emph{Scientific Reports} \textbf{10} \penalty0 (1), \penalty0 853
-  (2020).
 
 \end{thebibliography}
