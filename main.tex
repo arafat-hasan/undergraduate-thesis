@@ -25,7 +25,7 @@
 
 \pdfbookmark[1]{MBE of GaN/AlGaN Nanocolumns on Graphene}{title}% "1" = section level
 
-%\include{frontmatter/title_temp}
+\include{frontmatter/title_temp}
 %\include{frontmatter/dedication}
 %\include{frontmatter/quote}
 
@@ -62,18 +62,19 @@
 
 \part{Background}
 
-\include{mainmatter/ch0}
-\include{mainmatter/ch1}
+\include{mainmatter/background}
+\include{mainmatter/ml-on-vehicle-detection}
 \include{mainmatter/related_works}
-\include{mainmatter/object_detection_with_yolo.tex}
- \include{mainmatter/methodology.tex}
- \include{mainmatter/dataset.tex}
- \include{mainmatter/train.tex}
- \include{mainmatter/limitations.tex}
- \include{mainmatter/result-analysis.tex}
-
+\include{mainmatter/object_detection_with_yolo}
+\include{mainmatter/methodology}
+\include{mainmatter/dataset}
 \cleardoublepage\phantomsection % to fix wrong hyperref to \part{Result}
 \part{Results}
+\include{mainmatter/train}
+\include{mainmatter/result-analysis}
+\include{mainmatter/limitations}
+\include{mainmatter/conclusion.tex}
+
 
 % \include{mainmatter/ch4}
 % \include{mainmatter/ch5}
@@ -97,7 +98,7 @@
 %\include{backmatter/curriculumvitae}
 %\include{backmatter/dissemination}
 %\include{backmatter/copyright}
-%\include{backmatter/index}
+\include{backmatter/index}
 
 % \cleardoublepage % intentionally put Colophon in the even page -> ignore the following error
 % % "Package marginnote Warning: Consecutive odd pages found. Note, it is not recommended to use consecutive odd pages in a double-ended document. The pages of your document should always be a sequence: odd-even-odd-even-... Maybe you've forgotten a \cleardoublepage before changing the page numbering on page End-1."

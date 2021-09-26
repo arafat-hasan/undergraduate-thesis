@@ -94,25 +94,49 @@ the training set but falls to detect objects in new images. As it can be seen in
 file  stored in the epoch 15 and the epoch 18 obtain the  best mAP value of 37.20\% and in the 
 Table 3 the weight file obtained in the epoch 16 gets a 35.52\% mAP best value.  
 
-\begin{figure}[H] % \begin{figure}[H] for forcing the figure placement here ; in the bottom, \begin{figure}[!b] ; top of the page, \begin{figure}[!t] ; otherwise, \begin{figure} will let LaTeX decide the best figure placement for you
-  \centering
-  \includegraphics[width=0.5\textwidth]{figures/paper/box-loss.png}
-  \caption[The Architecture]{\textbf{The Architecture}. Our detection network has $24$ convolutional layers followed by $2$ fully connected layers. Alternating $1 \times 1$ convolutional layers reduce the features space from preceding layers. We pretrain the convolutional layers on the ImageNet classification task at half the resolution ($224 \times 224$ input image) and then double the resolution for detection.}
+%\begin{figure}[H] % \begin{figure}[H] for forcing the figure placement here ; in the bottom, \begin{figure}[!b] ; top of the page, \begin{figure}[!t] ; otherwise, \begin{figure} will let LaTeX decide the best figure placement for you
+%    \begin{minipage}{0.45\textwidth}
+%  \centering
+%  \includegraphics[width=0.9\textwidth]{figures/paper/box-loss.png}
+%  \caption[The Architecture]{\textbf{The Architecture}. }
+%  \label{fig:figures/paper/box-loss}
+%  \end{minipage}\hfill
+%%\end{figure}
+
+
+%%\begin{figure}[H] % \begin{figure}[H] for forcing the figure placement here ; in the bottom, \begin{figure}[!b] ; top of the page, \begin{figure}[!t] ; otherwise, \begin{figure} will let LaTeX decide the best figure placement for you
+%  \begin{minipage}{0.45\textwidth}
+%  \centering
+%  \includegraphics[width=0.9\textwidth]{figures/paper/cls-loss.png}
+%  \caption[The Architecture]{\textbf{The Architecture}. }
+%  \label{fig:figures/paper/cls-loss}
+%  \end{minipage}
+%\end{figure}
+
+
+\begin{figure}
+    \centering
+    \begin{minipage}{0.48\textwidth}
+        \centering
+  \includegraphics[width=\textwidth]{figures/paper/box-loss.png}
+    \end{minipage}\hfill
+    \begin{minipage}{0.48\textwidth}
+        \centering
+  \includegraphics[width=\textwidth]{figures/paper/cls-loss.png}
+    \end{minipage}
+    \caption[Box loss and Classificaton loss]{\textbf{Losses over Epochs} Box loss and Classificaton loss }
   \label{fig:figures/paper/box-loss}
 \end{figure}
 
 
-\begin{figure}[H] % \begin{figure}[H] for forcing the figure placement here ; in the bottom, \begin{figure}[!b] ; top of the page, \begin{figure}[!t] ; otherwise, \begin{figure} will let LaTeX decide the best figure placement for you
-  \centering
-  \includegraphics[width=0.5\textwidth]{figures/paper/cls-loss.png}
-  \caption[The Architecture]{\textbf{The Architecture}. Our detection network has $24$ convolutional layers followed by $2$ fully connected layers. Alternating $1 \times 1$ convolutional layers reduce the features space from preceding layers. We pretrain the convolutional layers on the ImageNet classification task at half the resolution ($224 \times 224$ input image) and then double the resolution for detection.}
-  \label{fig:figures/paper/cls-loss}
-\end{figure}
+
+
+
 
 \begin{figure}[H] % \begin{figure}[H] for forcing the figure placement here ; in the bottom, \begin{figure}[!b] ; top of the page, \begin{figure}[!t] ; otherwise, \begin{figure} will let LaTeX decide the best figure placement for you
   \centering
   \includegraphics[width=\textwidth]{figures/paper/mAP.png}
-  \caption[The Architecture]{\textbf{The Architecture}. Our detection network has $24$ convolutional layers followed by $2$ fully connected layers. Alternating $1 \times 1$ convolutional layers reduce the features space from preceding layers. We pretrain the convolutional layers on the ImageNet classification task at half the resolution ($224 \times 224$ input image) and then double the resolution for detection.}
+  \caption[The Architecture]{\textbf{mAP Comparison of YOLOv5 and Modified YOLO with ORB}. Graph computed during the training; the mAP is computed over the validation set.}
   \label{fig:figures/paper/mAP}
 \end{figure}
 
@@ -135,14 +159,14 @@ to detect all the vehicles in the images.
 \begin{figure}[H] % \begin{figure}[H] for forcing the figure placement here ; in the bottom, \begin{figure}[!b] ; top of the page, \begin{figure}[!t] ; otherwise, \begin{figure} will let LaTeX decide the best figure placement for you
   \centering
   \includegraphics[width=\textwidth]{figures/paper/results.png}
-  \caption[The Architecture]{\textbf{The Architecture}. Our detection network has $24$ convolutional layers followed by $2$ fully connected layers. Alternating $1 \times 1$ convolutional layers reduce the features space from preceding layers. We pretrain the convolutional layers on the ImageNet classification task at half the resolution ($224 \times 224$ input image) and then double the resolution for detection.}
+  \caption[The Architecture]{\textbf{Result of Dhaka AI and Indian Driving Dataset}. }
   \label{fig:figures/paper/results}
 \end{figure}
 
 \begin{figure}[H] % \begin{figure}[H] for forcing the figure placement here ; in the bottom, \begin{figure}[!b] ; top of the page, \begin{figure}[!t] ; otherwise, \begin{figure} will let LaTeX decide the best figure placement for you
   \centering
   \includegraphics[width=\textwidth]{figures/paper/yolo-on-coco.png}
-  \caption[The Architecture]{\textbf{The Architecture}. Our detection network has $24$ convolutional layers followed by $2$ fully connected layers. Alternating $1 \times 1$ convolutional layers reduce the features space from preceding layers. We pretrain the convolutional layers on the ImageNet classification task at half the resolution ($224 \times 224$ input image) and then double the resolution for detection.}
+  \caption[The Architecture]{\textbf{Result on COCO}. }
   \label{fig:figures/paper/yolo-on-coco}
 \end{figure}
 
