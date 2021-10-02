@@ -1,0 +1,52 @@
+
+In this section, We have mentioned some literature reviews of recent works which are given below:
+
+A vehicle (from Latin: vehiculum \cite{vehicleDef}) is a machine that transports people or cargo. Vehicles include wagons, bicycles, motor vehicles (motorcycles, cars, trucks, buses), railed vehicles (trains, trams), watercraft (ships, boats), amphibious vehicles (screw-propelled vehicle, hovercraft), aircraft (airplanes, helicopters, aerostat) and spacecraft \cite{wikipediaVehicle}. Land vehicles are classified broadly by what is used to apply steering and drive forces against the ground: wheeled, tracked, railed or skied. ISO 3833-1977 is the standard, also internationally used in legislation, for road vehicles types, terms and definitions. Vehicle detection and vehicle type recognition is a practical application of machine learning concepts and is directly applicable for various operations in a traffic surveillance system contributing to an intelligent traffic surveillance system. We will introduce the processing of automatic vehicle detection and recognition using static image datasets. Further using the same technique, we shall improvise vehicle detection by using live CCTV surveillance. The surveillance system includes detection of moving vehicles and recognizing them, counting number of vehicles and verification of their permit with the organization \cite{SriashikaAddala2020}.
+
+
+Intelligent vehicle detection and counting are becoming increasingly important in the field of highway management. However, due to the different sizes of vehicles, their detection remains a challenge that directly affects the accuracy of vehicle counts. To address this issue, this paper proposes a vision-based vehicle detection and counting system. In the proposed vehicle detection and counting system, the highway road surface in the image is first extracted and divided into a remote area; the method is crucial for improving vehicle detection. Then, the vehicle trajectories are obtained by the ORB algorithm. Finally, the above two areas are placed into the YOLOv5 network to detect the type and location of the vehicle. Several highway surveillance videos based on different scenes are used to verify the proposed methods. The experimental results verify that using the proposed segmentation method can provide higher detection accuracy, especially for the detection of small vehicle object \cite{SriashikaAddala2020}. 
+
+Vehicle detection and statistics in highway monitoring video scenes are of considerable significance to intelligent traffic management and control of the highway. With the popular installation of traffic surveillance cameras, a vast database of traffic video footage has been obtained for analysis. Generally, at a high viewing angle, a more-distant road surface can be considered. The object size of the vehicle changes greatly at this viewing angle, and the detection accuracy of a small object far away from the road is low. In the face of complex camera scenes, it is essential to effectively solve the above problems and further apply them \cite{SongH2019}. 
+
+
+
+\begin{table}[!h]
+  \centering
+  \caption[Literature Review]{Literature Review}
+  \label{tab:lit_review}
+  {\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{p{2cm} p{3cm} p{3cm} p{3cm}} 
+   \toprule
+  References & Methods & Merits & limitations \\
+  \hline
+  [Huansheng Song et al.]\cite{SongH2019} & YOLOv3 object detection and ORB algorithm
+ & Can accurately detect driving direction of vehicle
+ & Counting vehicle and detection is not in state of art
+ \\ 
+  \hline
+  [Tang. Y. Zhang et al.]\cite{TangYong} & Haar-like features and AdaBoost algorithm
+ & Can accurately detect
+vehicle in road
+ & High false rate on detected vehicle  \\ 
+  \hline
+  [Ahmad Arinaldi et al.]\cite{ARINALDI2018259} & Faster-RCNN compared with MOG+SVM algorithm
+ & It shows comparison of vehicle classification and detection
+ & Many latest object detection model is not concerned
+ \\ 
+  \hline
+  [Lili Jia et al.]\cite{lilijia} & Road and vehicle segmentation and camshift algorithm
+ & Can detect vehicle from road CCTV camera accurately
+ & Can not detect vehicle accurately from moving camera
+ \\ 
+  \hline
+  [Raad Ahmed Hadi et al.]\cite{10.1007/978-3-642-31968-6_70} & Road and vehicle segmentation and Shadow Identification algorithm
+ & Can detect vehicle from CCTV and satellite camera
+ & Can not detect vehicle accurately from moving camera
+  \\
+  \bottomrule
+\end{tabular}
+  }
+\end{table}
+
+
+A CCTV camera is a very essential part of an intelligent traffic surveillance framework. It is simply the automated process of monitoring the traffic in a particular area and detecting vehicles for further action, as shown in the diagram. The captured images can provide valuable clues to the cops and other public essential tracking services, such as vehicle’s license plate number, time and motion of vehicle, details associated with the driver, etc.. which all may lead to evidence of some crime or any unforeseen or unfortunate incidents. Earlier people used to process images manually. In fact, this system is still going on in India, whereas countries like the USA also have implemented automated machines- CCTVs that function 24x7 and take immediate action via signaling too. Manual work has always been proven slower and less efficient due to human errors and many other factors that affect living beings. Keeping these points in mind and moving with the advancement of technologies, many innovative thinkers have developed certain intelligent traffic control systems using various techniques. This research is based upon the combination of two prior-made researches by scholars whose works have been published \cite{Baran2016}.

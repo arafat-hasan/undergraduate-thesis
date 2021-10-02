@@ -1,7 +1,46 @@
 \usepackage[utf8]{inputenc}
 
-\usepackage{graphicx} % [draft]{graphicx} to remove all images
-\graphicspath{{images/}}
+%====================
+\usepackage{eurosym}
+\usepackage{ragged2e}
+\setcounter{secnumdepth}{5}
+\setcounter{tocdepth}{5}
+
+\usepackage{makecell}
+
+\usepackage{lineno}
+\usepackage{array}
+\newcolumntype{L}{>{\arraybackslash}m{5.40cm}}
+
+\usepackage{moresize}
+\usepackage{float}
+\usepackage[style=ieee, backref=true]{biblatex}
+\addbibresource{References.bib}
+\usepackage{silence}
+\usepackage{amsmath}
+\usepackage{relsize}
+
+%\usepackage{algorithmic}
+
+\usepackage[linesnumbered,ruled]{algorithm2e}
+%\usepackage[options ]{algorithm2e}
+%\usepackage{algorithmic}
+\usepackage{graphicx} %Adding picture and figure
+\usepackage{eso-pic}
+
+\usepackage{lmodern}
+
+\usepackage{algpseudocode}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage{subfigure}
+\usepackage{comment}
+
+\usepackage[export]{adjustbox}% http://ctan.org/pkg/adjustbox
+%==================
+
 \usepackage{wrapfig}
 \usepackage{bbm}
 
@@ -12,7 +51,7 @@
 %=======================================================================
 %%% thesis geometry
 
-\usepackage[text={115mm,197.2mm},hmarginratio=1:1,vmarginratio=1:1,marginparwidth=12mm]{geometry} 
+\usepackage[text={130mm,197.2mm},hmarginratio=1:1,vmarginratio=1:1,marginparwidth=12mm]{geometry} 
 \usepackage{mwe}
 %=======================================================================
 
@@ -135,7 +174,7 @@
 %=======================================================================
 %%% hyperref
 
-\usepackage[backref=page]{hyperref}
+\usepackage{hyperref}
 
 \hypersetup{
     hidelinks,
@@ -148,16 +187,17 @@
 }
 
 % === back references == 
-
+\iffalse
 \newcommand{\citedbox}[1]{%
   \begingroup\setlength{\fboxsep}{1pt}% 1pt is the default value; height
   \colorbox{White}{\hspace*{-1pt}\vphantom{Ay}#1\hspace*{-1pt}}% each 2pt is the default value; width
   \endgroup % originally the colorbox is set to "Test". it is good, but draws too much attention.
 }
+\fi
 
 \usepackage{etoolbox}
 
-\def\backref#1{{\citedbox{\textcolor{Test3}{Cited on page/s} #1\textcolor{Test3}{.}}}} % use this when \citedbox command is used. 
+%\def\backref#1{{\citedbox{\textcolor{Test3}{Cited on page/s} #1\textcolor{Test3}{.}}}} % use this when \citedbox command is used. 
 
 % === \ref = \autoref == %
 
@@ -264,22 +304,22 @@
 %=======================================================================
 %%% Bibliography at the end of each chapter, based on NATBIB
 
-\usepackage[super,comma,sort&compress]{natbib} 
+%\usepackage[super,comma,sort&compress]{natbib} 
 
-\usepackage{bibentry}
+%\usepackage{bibentry}
 
-\usepackage[sectionbib]{chapterbib} % put ref at the end of each chapter. however, the spacing in the TOC will be messed up. it can be fixed using "numbib" option as shown below
-\usepackage[nottoc,numbib]{tocbibind} % numbib (for numbering reference section) is used to enable cross-ref with TOC
+%\usepackage[sectionbib]{chapterbib} % put ref at the end of each chapter. however, the spacing in the TOC will be messed up. it can be fixed using "numbib" option as shown below
+%\usepackage[nottoc,numbib]{tocbibind} % numbib (for numbering reference section) is used to enable cross-ref with TOC
 
-\usepackage{hypernat} % to fix the missing page citation "\usepackage[backref=page]{hyperref}" that is nested in between, e.g., 19 is not missing if the refs is from 18-20, i.e., "sort&compress" in natbib is activated
+%\usepackage{hypernat} % to fix the missing page citation "\usepackage[backref=page]{hyperref}" that is nested in between, e.g., 19 is not missing if the refs is from 18-20, i.e., "sort&compress" in natbib is activated
 
-\addto{\captionsenglish}{% if BABEL is used
-  \renewcommand{\bibname}{References}
-}
+%\addto{\captionsenglish}{% if BABEL is used
+%  \renewcommand{\bibname}{References}
+%}
 
-\renewcommand*{\bibfont}{\footnotesize}
+%\renewcommand*{\bibfont}{\footnotesize}
 
-\setlength{\bibsep}{0.7pt}
+%\setlength{\bibsep}{0.7pt}
 
 %=======================================================================
 %=======================================================================
@@ -311,7 +351,7 @@
 
 }
 
-\setlength{\headheight}{13.6pt} % remove headheight error message: https://tex.stackexchange.com/questions/271159/turn-off-fancyhdr-auto-spacing, https://latex.org/forum/viewtopic.php?t=30693 
+\setlength{\headheight}{15pt} % remove headheight error message: https://tex.stackexchange.com/questions/271159/turn-off-fancyhdr-auto-spacing, https://latex.org/forum/viewtopic.php?t=30693 
 
 \renewcommand{\headrulewidth}{0pt}
 
