@@ -1,23 +1,23 @@
 \section{Introduction}
-YOLO (You Only Look Once) is a state-of-art algorithm devoted to object detection, as the name implies it can predict objects just by looking once at the image in a clever way. YOLO makes the prediction by classifying the object and locating it in the image. It uses deep learning and CNN techniques to detect objects, and distinguishes itself from its competitors because, as its name indicates, it requires to see the image only once, allowing it to be the fastest of all although it sacrifices a little accuracy. This speed allows users to easily detect objects in real time in videos (up to 30 FPS). In other words, YOLO takes as input value an image and passes through the neural network that looks like a CNN and returns a vector of bounding boxes and class prediction. To understand better how YOLO makes the prediction we will explain it with an example of an image as it can be seen in figure 3.1:
+YOLO (You Only Look Once) is a state-of-art algorithm devoted to object detection, as the name implies it can predict objects just by looking once at the image in a clever way. YOLO makes the prediction by classifying the object and locating it in the image. It uses deep learning and CNN techniques to detect objects, and distinguishes itself from its competitors because, as its name indicates, it requires to see the image only once, allowing it to be the fastest of all although it sacrifices a little accuracy. This speed allows users to easily detect objects in real time in videos (up to 30 FPS). In other words, YOLO takes as input value an image and passes through the neural network that looks like a CNN and returns a vector of bounding boxes and class prediction. To understand better how YOLO makes the prediction we will explain it with an example of an image as it can be seen in~\ref{fig:yolo-grid}:
 \newpage
 
 \begin{figure}[h]
     \centering
     \includegraphics[max width=\textwidth]{images/ours/yolo-grid.png}
-   \caption[Initial YOLO bounding boxes]{ YOLO divides up the image into a grid of 13 by 13 cells: Each of these cells is responsible for predicting 5 bounding boxes. A bounding box describes the rectangle that encloses an object. }
+   \caption[Initial YOLO Bounding Boxes]{ YOLO divides up the image into a grid of 13 by 13 cells: Each of these cells is responsible for predicting 5 bounding boxes. A bounding box describes the rectangle that encloses an object. }
     \label{fig:yolo-grid}
 \end{figure}
 
 
 
-\section{YOLO in brief}
-To perform de detection YOLO first divides the image into an S x S grid of cells, in Figure Figure 3.1 we can see that the image is divided into a 13 x 13 grid of cells. In each of the cells it predicts N possible bounding boxes and calculates the level of certainty (probability) of each of them (shown in Figure 13), that is, S x S x N different bounding boxes are calculated in the image, the vast majority of them with a very low level of certainty. The score of each BB does not classify what type of object is or it does not know what object is fitting the bounding box, it just gives a confidence value or a probability value of how good the BB is surrounding an object in each cell. In case of Figure Figure 3.1 for each grid cells 5 bounding boxes are predicted and are graphically shown in Figure 3.2 where the higher the probability is the fatter the box is. Each cell makes N bounding box predictions and M class probabilities. 
+\section{YOLO in Brief}
+To perform de detection YOLO first divides the image into an S x S grid of cells, in~\ref{fig:yolo-grid} we can see that the image is divided into a 13 x 13 grid of cells. In each of the cells it predicts N possible bounding boxes and calculates the level of certainty (probability) of each of them, that is, S x S x N different bounding boxes are calculated in the image, the vast majority of them with a very low level of certainty. The score of each BB does not classify what type of object is or it does not know what object is fitting the bounding box, it just gives a confidence value or a probability value of how good the BB is surrounding an object in each cell. In case of~\ref{fig:yolo-grid} for each grid cells 5 bounding boxes are predicted and are graphically shown in~\ref{fig:yolo-grid-2} where the higher the probability is the fatter the box is. Each cell makes N bounding box predictions and M class probabilities. 
 
 \begin{figure}[h]
     \centering
     \includegraphics[max width=\textwidth]{images/ours/yolo-grid-2.png}
-   \caption[The predicted bounding boxes]{ The predicted bounding boxes may look something like this, the higher the confidence score, the fatter the box is drawn. }
+   \caption[Predicted YOLO Bounding Boxes]{ The predicted bounding boxes may look something like this, the higher the confidence score, the fatter the box is drawn. }
     \label{fig:yolo-grid-2}
 \end{figure}
 
@@ -43,9 +43,9 @@ the confidence is calculated will be explained later.
 
 
 \section{The Predictions Vector}
-The first step to understanding YOLO is how it encodes its output. The input image is divided into an S x S grid of cells. For each object that is present on the image, one grid cell is said to be “responsible” for predicting it. That is the cell where the center of the object falls into. 
+The first step to understanding YOLO is how it encodes its output. The input image is divided into an S x S grid of cells. For each object that is present on the image, one grid cell is said to be “responsible” for predicting it. That is the cell where the center of the object falls into \cite{redmon2016look}.
 
-Each grid cell predicts B bounding boxes as well as C class probabilities. The bounding box prediction has 5 components: (x, y, w, h, confidence). The (x, y) coordinates represent the center of the box, relative to the grid cell location (remember that, if the center of the box does not fall inside the grid cell, then this cell is not responsible for it). These coordinates are normalized to fall between 0 and 1. The (w, h) box dimensions are also normalized to [0, 1], relative to the image size.
+Each grid cell predicts B bounding boxes as well as C class probabilities. The bounding box prediction has 5 components: (x, y, w, h, confidence). The (x, y) coordinates represent the center of the box, relative to the grid cell location (remember that, if the center of the box does not fall inside the grid cell, then this cell is not responsible for it). These coordinates are normalized to fall between 0 and 1. The (w, h) box dimensions are also normalized to [0, 1], relative to the image size \cite{redmon2016look}.
 
 \begin{figure}[h]
     \centering
@@ -67,7 +67,7 @@ the ImageNet classification task at half the resolution (224 ×224 input image)
 and then double the resolution for detection.
 
 
-The network structure looks like a normal CNN, with convolutions and max pooling layers, followed by 2 fully connected layers in the end: Note that the architecture was crafted for use in the Pascal VOC dataset, where the authors used S= 7, B = 2 and C = 20. This explains why the final feature maps are 7×7, and also explains the size of the output (7x7x (2×5+20)). Use of this network with a different grid size or different number of classes might require tuning of the layer dimensions. The authors mention that there is a fast version of YOLO, with fewer convolutions layers. We can see that in Table 3.1
+The network structure looks like a normal CNN, with convolutions and max pooling layers, followed by 2 fully connected layers in the end: Note that the architecture was crafted for use in the Pascal VOC dataset, where the authors used S= 7, B = 2 and C = 20. This explains why the final feature maps are 7×7, and also explains the size of the output (7x7x (2×5+20)). Use of this network with a different grid size or different number of classes might require tuning of the layer dimensions. The authors mention that there is a fast version of YOLO, with fewer convolutions layers. We can see that in~\ref{tab:orig-yolo-network}
 
 
 \begin{table}[hbt!]
@@ -114,7 +114,7 @@ The network structure looks like a normal CNN, with convolutions and max pooling
   }
 \end{table}
 
-Note that the architecture was crafted for use in the Pascal VOC dataset, where the authors used $S=7$, $B=2$ and $C=20$. This explains why the final feature maps are $7 \times 7$, and also explains the size of the output $(7x7x(2 \times 5+20))$. Use of this network with a different grid size or different number of classes might require tuning of the layer dimensions. The authors mention that there is a fast version of YOLO, with fewer convolutional layers. The table~\ref{tab:orig-yolo-network}, however, display the full version. The sequences of 1x1 reduction layers and 3x3 convolutional layers were inspired by the GoogLeNet (Inception) model. The final layer uses a linear activation function. All other layers use a leaky RELU $(\phi(x) = x, if x>0; 0.1x \ otherwise)$.
+Note that the architecture was crafted for use in the Pascal VOC dataset, where the authors used $S=7$, $B=2$ and $C=20$. This explains why the final feature maps are $7 \times 7$, and also explains the size of the output $(7x7x(2 \times 5+20))$. Use of this network with a different grid size or different number of classes might require tuning of the layer dimensions. The authors mention that there is a fast version of YOLO, with fewer convolutional layers. The~\ref{tab:orig-yolo-network}, however, display the full version. The sequences of 1x1 reduction layers and 3x3 convolutional layers were inspired by the GoogLeNet (Inception) model. The final layer uses a linear activation function. All other layers use a leaky RELU $(\phi(x) = x, if x>0; 0.1x \ otherwise)$.
 
 \section{The Loss Function}
 The loss function start like this:
@@ -171,5 +171,5 @@ The last part of the loss function is the classification loss:
 
 It looks similar to a normal sum-squared error for classification, except for the $\mathbbm{1} obj$ term. This term is used because so we don’t penalize classification error when no object is present on the cell (hence the conditional class probability discussed earlier).
 
-Note that the loss function only penalizes classification error if an object is present in that grid cell (hence the con-ditional class probability discussed earlier). It also only pe-nalizes bounding box coordinate error if that predictor is “responsible” for the ground truth box (i.e. has the highest IOU of any predictor in that grid cell). \cite{redmon2016look}
+Note that the loss function only penalizes classification error if an object is present in that grid cell (hence the con-ditional class probability discussed earlier). It also only pe-nalizes bounding box coordinate error if that predictor is “responsible” for the ground truth box (i.e. has the highest IOU of any predictor in that grid cell). \cite{redmon2016look}.
 

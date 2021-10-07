@@ -7,7 +7,7 @@ In this chapter we will discuss about our research findings and will compare it 
 Here is the definition of the result metrics we are finding from our study.
 \subsection{Classification} 
 In machine learning, classification refers to a predictive modeling problem where a class label is predicted for a given example of input data. 
-Classification measured with confidence score  also known as accuracy or precision which is defined in percentage(\%) or between 0 to 1. We used both measuring method in our study. The equation for calculating precision score is :
+Classification measured with confidence score  also known as accuracy or precision which is defined in percentage(\%) or between 0 to 1. We used both measuring method in our study. The equation for calculating precision score is:
 
 \begin{equation}
     precision = \frac{True \ Positive}{True \ Positive+False \ Positive}
@@ -15,7 +15,7 @@ Classification measured with confidence score  also known as accuracy or precisi
 
 \begin{table}[!h]
   \centering
-  \caption[Evaluation of the model]{Evaluation of the model on the validation set with an IoU threshold of 50\% that is the 
+  \caption[Evaluation of the Model]{Evaluation of the model on the validation set with an IoU threshold of 45\% that is the 
 Area-Under-Curve for each unique Recall. }
   \label{tab:class-ap}
   {\renewcommand{\arraystretch}{1.1}
@@ -51,7 +51,7 @@ Area-Under-Curve for each unique Recall. }
 
 
 
-In our dataset there are 21 classes and we have a very high accuracy rate but the detection rate is low because of low data and ground truth bounding boxes. In table 5.1 we can see classification accuracy for 6 classes: car, rickshaw, bus, suv and truck. We can see the accuracy is gradually increasing but both wheelbarrow and suv have very low accuracy compared to other 4 classes. This is because of very low data related to these 2 classes. We identified that there are a total 10 classes which have very low data compared to other 11 classes. 
+In our dataset there are 21 classes and we have a very high accuracy rate but the detection rate is low because of low data and ground truth bounding boxes. In~\ref{tab:vehicle_count} we can see classification accuracy for 6 classes: car, rickshaw, bus, SUV and truck. We can see the accuracy is gradually increasing but both wheelbarrow and SUV have very low accuracy compared to other 4 classes. This is because of very low data related to these 2 classes. We identified that there are a total 10 classes which have very low data compared to other 11 classes. 
 
 
 \subsection{Counting} Counting in machine learning means how many same objects are in the predicted data. Though It is the sub product of classification, it can be used in many useful tasks. Like counting how many cars are passing by everyday and how many buses and trucks are there. The calculation of counting is simple. For this we need to calculate the classification result and store it as data so that we can use it later.
@@ -59,13 +59,13 @@ In our dataset there are 21 classes and we have a very high accuracy rate but th
 \begin{figure}[h]
     \centering
     \includegraphics[max width=\textwidth]{images/ours/Asraf_51_jpg.rf.0e3516baf7509bc2c4a4aa8deea494c2.jpg}
-   \caption[Inference sample]{ Inference from model of our proposed architecture}
+   \caption[Inference Sample]{ Inference from the model of our proposed architecture}
     \label{fig:inference23}
 \end{figure}
 
 \begin{table}[!h]
   \centering
-  \caption[Vehicles count]{ Vehicles count table}
+  \caption[Vehicle Count]{Vehicle count}
   \label{tab:vehicle_count}
   {\renewcommand{\arraystretch}{1.1}
     \begin{tabular}{p{2cm} p{3cm} p{3cm}}
@@ -98,7 +98,7 @@ Detection mostly use bounding box to detect object from image. Bounding box is a
 \begin{figure}[h]
     \centering
     \includegraphics[max width=\textwidth]{images/ours/box-loss.png}
-   \caption[Bounding box loss comparision of proposed mdoel and YOLOv5]{Bounding box loss comparision of proposed mdoel and YOLOv5}
+   \caption[Box Loss Comparison of Proposed Model and YOLOv5]{Bounding box loss comparison of our proposed model and YOLOv5}
     \label{fig:box_loss}
 \end{figure}
 \subsection{Comparison of Loss }
@@ -107,27 +107,27 @@ In~\ref{fig:box_loss} we can see comparison of detection box loss during trainin
 \begin{figure}[h]
     \centering
     \includegraphics[max width=\textwidth]{images/ours/cls-loss.png}
-   \caption[Train classification loss comparison of original YOLOv5 and proposed model]{ bounding classification loss comparison between YOLOv5(blue) and our model(red)}
+   \caption[Classification Loss comparison of YOLOv5 and Our Proposed Model]{ Classification loss comparison of our proposed model and YOLOv5}
     \label{fig:cls_loss}
 \end{figure}
 
-In fig 5.3 we can see classification loss comparison between YOLOv5 and our proposed method. We can see that both classification loss and box loss are almost identical because of YOLO's feature: it both detects and classifies objects at the same time. That is why it is known as “ you only look once” not like FasterRCNN or other models where we get different loss for classification and detection. Because those models use different methods for classification and detection inside the same model. So we can say our model beats YOLOv5 in both classification and detection loss. 
+In~\ref{fig:cls_loss} we can see classification loss comparison between YOLOv5 and our proposed method. We can see that both classification loss and box loss are almost identical because of YOLO's feature: it both detects and classifies objects at the same time. That is why it is known as “ you only look once” not like FasterRCNN or other models where we get different loss for classification and detection. Because those models use different methods for classification and detection inside the same model. So we can say our model beats YOLOv5 in both classification and detection loss. 
 
-\subsection{Accuracy comparison  }
+\subsection{Accuracy Comparison  }
 This is the most important of any study. Here we will try to compare our model with the existing model and our parent model which we modified. 
 
 \begin{figure}[h]
     \centering
     \includegraphics[max width=\textwidth]{images/ours/mAP.png}
-   \caption[mAP comparison of YOLOv5 and proposed model]{mAP comparison of YOLOv5 and proposed model}
-    \label{fig:ma}
+   \caption[mAP Comparison of YOLOv5 and Our Proposed Model]{mAP comparison of YOLOv5 and our proposed model}
+    \label{fig:mAP}
 \end{figure}
 
-In 5.10 we can see our model(red) mAP almost touch .13 during epoch 300 where YOLOv5(blue) touches only .12 . There is almost .1 (10\%) difference for our mixed Dhaka-Ai dataset. This result show that our model is doing better in both detection and classification. But the result of mAP is very low because of the less data in some classes. If we remove the class then the accuracy increases exponentially. But that will be researched in other studies. Currently we are studying 21 classes but only a few classes have enough data to be trained. We will be trying to reduce the classes so that we can improve our model for a few classes and use it in modern tasks. This model can easily detect bus, truck, car  without much effort but when it comes to classes which have low data like wheelbarrow, ambulance, garbage van etc it can not detect these classes very well. We have plan to study this dataset and model without the minor classes which has low data compared to others.
+In~\ref{fig:mAP} we can see our model mAP almost touch 0.13 during epoch 300 where YOLOv5 touches only 0.12. There is almost 0.1 (10\%) difference for our mixed Dhaka-Ai dataset. This result show that our model is doing better in both detection and classification. But the result of mAP is very low because of the less data in some classes. If we remove the class then the accuracy increases exponentially. But that will be researched in other studies. Currently we are studying 21 classes but only a few classes have enough data to be trained. We will be trying to reduce the classes so that we can improve our model for a few classes and use it in modern tasks. This model can easily detect bus, truck, car  without much effort but when it comes to classes which have low data like wheelbarrow, ambulance, garbage van etc it can not detect these classes very well. We have plan to study this dataset and model without the minor classes which has low data compared to others.
 
 \begin{table}[!h]
   \centering
-  \caption[Performance comparison of proposed model with various model]{Performance comparison of proposed model with various model}
+  \caption[Performance Comparison of Proposed Model with Various Models]{Performance comparison of proposed model with various models}
   \label{tab:model_comp}
   {\renewcommand{\arraystretch}{1.7}
       \begin{tabular}{p{4cm} p{1cm} p{0.8cm} p{1cm} p{2.6cm}}
@@ -145,7 +145,7 @@ In 5.10 we can see our model(red) mAP almost touch .13 during epoch 300 where YO
   }
 \end{table}
 
-This is very unique dataset none research has been made with this dhaka-ai mixed dataset. For this we run it into many diffrent models like EfficientDet D4, SSD ResNet152 V1 FPN , Faster R-CNN ResNet101 V1 , Faster R-CNN Inception ResNet V2 , YOLO v5. After traning the 
+This is very unique dataset none research has been made with this dhaka-ai mixed dataset. For this we run it into many different models like EfficientDet D4, SSD ResNet152 V1 FPN , Faster R-CNN ResNet101 V1 , Faster R-CNN Inception ResNet V2 , YOLO v5. After training the 
 
 
 \newpage
@@ -155,65 +155,65 @@ In this section we will discuss about prediction results of our model.
 \begin{figure}[h]
     \centering
     \includegraphics[max width=\textwidth]{images/ours/2.jpg}
-   \caption{ Sample inference of vehicle prediction near road fence}
+   \caption[Sample Inference of Vehicles 1]{Sample inference of vehicles prediction near a road fence}
     \label{fig:inference345}
 \end{figure}
 
 \newpage
-In fig 5.5 we can see our model classified rickshaw and bicycle with confidence score .69 and minivan with .5 confidence score which is true positive and the bounding box is also in good shape. But if we look closely we can see this model can't detect other vehicles which is other side of the fence and have low visibility. Sometimes this kind of situation gives false positive results. 
+In~\ref{fig:inference345} we can see our model classified rickshaw and bicycle with confidence score 0.69 and minivan with 0.5 confidence score which is true positive and the bounding box is also in good shape. But if we look closely we can see this model can't detect other vehicles which is other side of the fence and have low visibility. Sometimes this kind of situation gives false positive results. 
 
 \begin{figure}[h]
     \centering
     \includegraphics[max width=\textwidth]{images/ours/inference-2.jpg}
-   \caption{ Sample inference of multiple vehicle of same class}
+   \caption[Sample Inference of Vehicles 2]{Sample inference of multiple vehicles of same class}
     \label{fig:inference43}
 \end{figure}
 
-In fig 5.6 we can see multiple vehicle of same class is there. We can see that it can easily identify rickshaws where confidence scores differ by the size of the vehicle. We can also see that sometimes two or more vehicles overlapped as one because of the IoU(intersection of union).
+In~\ref{fig:inference43} we can see multiple vehicle of same class is there. We can see that it can easily identify rickshaws where confidence scores differ by the size of the vehicle. We can also see that sometimes two or more vehicles overlapped as one because of the IoU (intersection of union).
 
 \newpage
 
 \begin{figure}[h]
     \centering
     \includegraphics[max width=\textwidth]{images/ours/1.jpg}
-   \caption{ Sample inference of false positive and undetected vehicles}
+   \caption[Sample Inference of Vehicles 3]{Sample inference of false positive and undetected vehicles}
     \label{fig:inference2354}
 \end{figure}
 
-In fig 5.7 we can see rickshaw is detected perfectly but the vehicle wheelbarrow and buses from other side of road fence is not detected. Because of the missing edges of the vehicles. Also we can see a false positive where our model detects the car as suv with confidence score .32 and car as .30. It happens because of low data on suv and wheelbarrow vehicles. 
+In~\ref{fig:inference2354} we can see rickshaw is detected perfectly but the vehicle wheelbarrow and buses from other side of road fence is not detected. Because of the missing edges of the vehicles. Also we can see a false positive where our model detects the car as SUV with confidence score 0.32 and car as 0.30. It happens because of low data on SUV and wheelbarrow vehicles. 
 
 \newpage
 
 \begin{figure}[h]
     \centering
     \includegraphics[max width=\textwidth]{images/ours/3 (2).jpg}
-   \caption{ Sample inference of multiple types of vehicles}
+   \caption[Sample Inference of Vehicles 5]{ Sample inference of multiple types of vehicles}
     \label{fig:inference875}
 \end{figure}
 
-In fig 5.8 we can see our model detecting multiple type of vehicles but missing some wheelbarrow. We can also see our model giving very low false positives and detecting vehicles in distance with a good confidence score. This image is in dusk but it is still predicating with good accuracy.
+In~\ref{fig:inference875} we can see our model detecting multiple type of vehicles but missing some wheelbarrow. We can also see our model giving very low false positives and detecting vehicles in distance with a good confidence score. This image is in dusk but it is still predicating with good accuracy.
 
 \newpage
 
 \begin{figure}[h]
     \centering
     \includegraphics[max width=\textwidth]{images/ours/3 (1).jpg}
-   \caption{ Sample inference of night time vehicles}
+   \caption[Sample Inference of Vehicles 6]{ Sample inference vehicles at night}
     \label{fig:inference34567}
 \end{figure}
 
-In fig 5.9 our model detects vehicles during night. We can easily see that it can detect trucks with very high accuracy but fails to detect rickshaws and buses which have a high accuracy rate during day time. Because our dataset lacks images of night time. But we have many images of trucks during both night and day. That is why we can detect trucks and other related classes in night time accurately.
+In~\ref{fig:inference34567} our model detects vehicles during night. We can easily see that it can detect trucks with very high accuracy but fails to detect rickshaws and buses which have a high accuracy rate during day time. Because our dataset lacks images of night time. But we have many images of trucks during both night and day. That is why we can detect trucks and other related classes in night time accurately.
 
 \newpage
 
 \begin{figure}[ht]
     \centering
     \includegraphics[max width=\textwidth]{images/ours/3 (3).jpg}
-   \caption{ Sample inference of false positive during dusk}
+   \caption[Sample Inference of Vehicles 7]{Sample inference of false positive during dusk}
     \label{fig:inference346}
 \end{figure}
 
-In fig 5.10 we can see our model detecting small vehicle objects with good accuracy but it detects sides of road block building as bus because of low light and having similarity with edges of bus. It is a blunder mistake but it has very low confidence with this false positive result.
+In~\ref{fig:inference346} we can see our model detecting small vehicle objects with good accuracy but it detects sides of road block building as bus because of low light and having similarity with edges of bus. It is a blunder mistake but it has very low confidence with this false positive result.
 \newpage
 
 

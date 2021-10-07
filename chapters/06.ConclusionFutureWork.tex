@@ -7,7 +7,7 @@ After having carried out this study, we have reached the following conclusions. 
 unique  and  must  be  evaluated  and  tested  in  order  to  obtain  a  good  detecting  and  tracking 
 model. YOLOv5 is the fifth version of the  YOLO object  detection model and the  one  that has 
 been  used  all  through  this  work  to  detect  vehicles.  The  most  important  thing  when  training 
-YOLOV5 is to obtain a wide dataset of vehicles in all the type of positions, point of views, image 
+YOLOv5 is to obtain a wide dataset of vehicles in all the type of positions, point of views, image 
 resolution, forms, brands, etc. By this way, the model learns the concept of vehicle in all its forms 
 that would appear in real life and therefore it is going to generalize well the concept of vehicle 
 and is going to be able to detect vehicles  in new  images  that  have not  been used to train the 
@@ -17,12 +17,12 @@ in order to obtain a model capable of detecting vehicles in images of high and l
 
 
 
-It  is  preferable  to  train  YOLOV5  with  anchor  boxes  obtained  from  the  dataset  because  the 
+It  is  preferable  to  train  YOLOv5  with  anchor  boxes  obtained  from  the  dataset  because  the 
 prediction accuracy has been increased. An attempt has been made to reduce the training time 
 by  using  initial  weights  obtained  from  the  pre-trained  weights  for  the  COCO  and  ImageNet 
 dataset, but this has meant a worsening in all areas. We have made some attempts to see if the 
 network can be trained with a lower resolution than 416 or with a subdivision value lower than 
-16  but  the  network  fails  in  the  training.  Finally,  after  analysing  all  the  trainings  we  have 
+16  but  the  network  fails  in  the  training.  Finally,  after  analysing  all  the  training's  we  have 
 concluded  that  with  the  last  training  we  get  the  best  values  according  accuracy,  recall  and 
 mAP@0.5.  This  training  has  been  done  with  the  lowest  value  the  training  accepts  for  the 
 subdivision parameter and the best data augmentation parameters. 
@@ -32,7 +32,7 @@ subdivision parameter and the best data augmentation parameters.
 The  most  important  thing  about  a  vehicle  tracking  system  is  the  capability  the  model  has  to 
 detect  vehicles  because  if  it  is  not  able  to  detect  some  vehicles  it  will  fail  to  track  them.  Our 
 system is very accurate at detecting vehicles and that is why we have obtained so good results 
-in  the  tracking  process.  The  model  that  contains  the  YOLOV5  object  detector  and  the  SORT 
+in  the  tracking  process.  The  model  that  contains  the  YOLOv5  object  detector  and  the  SORT 
 tracker must be adjusted to the area that the camera is recording. For example, a model that 
 detects vehicles very well on a highway will not work so well in a camera installed on a street of 
 a city because the interest point will have changed and we will have to modify some parameters 
@@ -46,4 +46,4 @@ will work alone.
 
 
 \section{Future Research Directions}
-YOLO imposes strong spatial constraints on boundingbox predictions since each grid cell only predicts two boxes and can only have one class. This spatial constraint limits the number of nearby objects that our model can predict. Our model struggles with small objects that appear ingroups, such as flocks of birds.Since our model learns to predict bounding boxes fromdata, it struggles to generalize to objects in new or unusual aspect ratios or configurations. Our model also uses relatively coarse features for predicting bounding boxes since our architecture has multiple downsampling layers from the input image.Finally, while we train on a loss function that approximates detection performance, our loss function treats errors the same in small bounding boxes versus large bounding boxes. A small error in a large box is generally benign but a small error in a small box has a much greater effect on IOU.Our main source of error is incorrect localizations.
+YOLO imposes strong spatial constraints on bounding box predictions since each grid cell only predicts two boxes and can only have one class. This spatial constraint limits the number of nearby objects that our model can predict. Our model struggles with small objects that appear in groups, such as flocks of birds.Since our model learns to predict bounding boxes from data, it struggles to generalize to objects in new or unusual aspect ratios or configurations. Our model also uses relatively coarse features for predicting bounding boxes since our architecture has multiple down sampling layers from the input image. Finally, while we train on a loss function that approximates detection performance, our loss function treats errors the same in small bounding boxes versus large bounding boxes. A small error in a large box is generally benign but a small error in a small box has a much greater effect on IOU. Our main source of error is incorrect localizations.
